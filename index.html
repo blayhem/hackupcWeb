@@ -24,15 +24,49 @@
       //'http://documentation.carto.com/api/v2/viz/2b13c956-e7c1-11e2-806b-5404a6a683d5/viz.json', {
       cartoMap = new L.map('map',{
           center: [40, -3],
-          zoom: 5,
-					shareable: false,
-					title: false,
-					description: true,
-					search: false,
-					tiles_loader: true,
-          scrollwheel:true,
-          legends:false
+          zoom: 5
 			})
+      
+      L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+    attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
+  }).addTo(cartoMap);
+      
+      let sublayers = [], layerURL = 'https://marioloko.carto.com/api/v2/viz/a5a075c2-8d8e-11e6-8b4c-0e05a8b3e3d7/viz.json';
+      
+      cartodb.createLayer(cartoMap, layerURL)
+      .addTo(cartoMap)
+      .on('done', (layer) => {
+        let queryOptions = {
+          sql:"SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = 0 AND EXTRACT(hour FROM date) = 0"
+        }
+        let sublayer = layer.getSubLayer(0);
+        sublayer.set(queryOptions);
+        
+        sublayers.push(sublayer);
+      });
+      
+      document.getElementById("weekday").addEventListener("change", cartoQuery);
+      document.getElementById("hour").addEventListener("change", cartoQuery);
+
+      function cartoQuery(){
+        let d = document.querySelector('#weekday').value;
+        console.log(d);
+        let h = document.querySelector('#hour').value;
+        console.log(h);
+        
+        let sqlform = "SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = "+d+" AND EXTRACT(hour FROM date) = "+h;
+        console.log(sqlform);
+        sublayers[0].setSQL(sqlform);
+      }
+      
+      // shareable: false,
+      // title: false,
+      // description: true,
+      // search: false,
+      // tiles_loader: true,
+      // scrollwheel:true,
+      // legends:false
+      
 			// .done(function(vis, layers) {
       //   cartoMap = vis.getNativeMap();
 			// 	// // layer 0 is the base layer, layer 1 is cartodb layer
@@ -50,43 +84,6 @@
 			// .error(function(err) {
 			// 	console.log(err);
 			// });
-      console.log(cartoMap);
-      let layerURL = 'https://marioloko.carto.com/api/v2/viz/a5a075c2-8d8e-11e6-8b4c-0e05a8b3e3d7/viz.json';
-      let query = {
-        sql: "SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = 0 AND EXTRACT(hour FROM date) = 0"
-      }
-      
-      cartodb.createLayer(cartoMap, layerURL)
-      .addTo(cartoMap)
-      .on('done', function(layer){
-        console.log(layer);
-        let sublayer = layer.getSubLayer(0);
-        sublayer.set(query);
-        sublayers.push(sublayer);
-      });
-		}
-
-		cartoQuery();
-		document.getElementById("weekday").addEventListener("change", cartoQuery);
-		document.getElementById("hour").addEventListener("change", cartoQuery);
-
-		function cartoQuery(){
-      console.log(cartoMap);
-			let d = document.querySelector('#weekday').value;
-			console.log(d);
-			let h = document.querySelector('#hour').value;
-			console.log(h);
-			
-			let sql = new cartodb.SQL({ user: 'marioloko' });
-      sql.execute("SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = 0 AND EXTRACT(hour FROM date) = 0", { day:d, hour:h })
-		.done(function(vis, layers, data) {
-      
-      
-		})
-		.error(function(errors) {
-			// errors contains a list of errors
-			console.log("errors:" + errors);
-		})
 		}
 	</script>
 </body>
