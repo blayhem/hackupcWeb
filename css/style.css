@@ -14,7 +14,7 @@ p{
 }
 
 .header{
-	background-color: #444;
+	background-color: #222;
 	position: absolute;
 	top: 0px;
 	width: 100vw;
@@ -27,7 +27,7 @@ p{
 .header p{
 	font-size: 4em;
 	font-weight: 100;
-	font-family: 'Helvetica-Neue', Helvetica, sans-serif,sans;
+	font-family: 'Roboto', proxima-nova, 'Helvetica-Neue', Helvetica, sans-serif,sans;
 	color: #fafafa;
 	margin: auto;
 	text-align: center;
