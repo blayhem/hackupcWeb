@@ -1,20 +1,23 @@
 import React from 'react';
+import Header from './Header.jsx';
+import Map from './Map.jsx';
+import Menu from './Menu.jsx';
 
-class Papp extends React.Component {
+class App extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {showWorkWindow: false, circle: true, bar: false};
+		this.state = {};
 	}
 	setStore(store){
 		this.setState(store);
 	}
-	showThing(newState){
-		let mergedState = Object.assign(this.state, newState);
-		this.setState(mergedState);
-	}
 	render() {
-
+		return <div>
+			<Header/>
+			<Menu/>
+			<Map/>
+		</div>;
 	}
 }
 
-export default Papp;
+export default App;
