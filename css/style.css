@@ -3,6 +3,10 @@ body{
 	margin: 0;
 }
 
+p{
+	font-family: Helvetica, Helvetica-Nueue, Open-sans, Roboto, sans;
+}
+
 #container{
 	max-height: 100vh;
 	height: 100vh;
@@ -21,7 +25,8 @@ body{
 }
 
 .header p{
-	font-size: 2em;
+	font-size: 4em;
+	font-weight: 100;
 	font-family: 'Helvetica-Neue', Helvetica, sans-serif,sans;
 	color: #fafafa;
 	margin: auto;
@@ -40,7 +45,7 @@ body{
 	display: inline-block;
 	vertical-align: top;
 	background-color: #303645;
-	text-align: center;
+	text-align: center;;
 }
 
 .menu p{
@@ -49,13 +54,33 @@ body{
 	font-family: Helvetica, Helvetica-Nueue, Open-sans, Roboto, sans;
 	color: #fafafa;
 	margin: 0px 2vw;
+	text-align: justify;
 }
 
 .menu img{
 	width: 10vw;
-	box-shadow: -2px 2px 2px 0px  rgba(0,0,0,0.4);
+	box-shadow: -2px 2px 1px 0px  rgba(255,255,255,0.8);
 	border-radius: 20000px;
 	margin: 20px 0px;
+}
+
+.footer{
+	width: 100%;
+	color: #fafafa;
+	font-weight: 100;
+	font-size: 0.8em;
+	position: absolute;
+	bottom: 10px;
+}
+
+.footer .att{
+	color: #EF4646;
+	margin-bottom: 5px;
+}
+
+.footer p{
+	margin-bottom: 2px;
+	text-align:left;
 }
 
 .map{

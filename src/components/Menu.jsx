@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './Footer.jsx';
 
 class Menu extends React.Component {
 	render() {
@@ -21,6 +22,7 @@ class Menu extends React.Component {
 		<img src='./hat.png'></img>
 		<p>Select the day of the week and period of time if you want to see where
 		the magic happens!</p>
+		<Footer/>
 		</div>;
 	}
 }
