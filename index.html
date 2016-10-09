@@ -19,7 +19,7 @@
 	<script>
     let cartoMap;
 		window.onload = () => {
-    
+      
       cartoMap = new L.map('map',{
           center: [41.39, 2.15],
           zoom: 6
@@ -34,14 +34,14 @@
       cartodb.createLayer(cartoMap, layerURL)
       .addTo(cartoMap)
       .on('done', (layer) => {
-        
+        console.log(layer);
         let queryOptions = {
           sql:"SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = 0 AND EXTRACT(hour FROM date) = 0"
         }
-        let sublayer = layer.getSubLayer(0);
-        sublayer.set(queryOptions);
-        
-        sublayers.push(sublayer);
+        // let sublayer = layer.getSubLayer(0);
+        // sublayer.set(queryOptions);
+        // sublayers.push(sublayer);
+        sublayers.push(layer);
       });
       
       document.getElementById("weekday").addEventListener("change", cartoQuery);
@@ -54,7 +54,6 @@
         console.log(h);
         
         let sqlform = "SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = "+d+" AND EXTRACT(hour FROM date) = "+h;
-        console.log(sqlform);
         sublayers[0].setSQL(sqlform);
       }
 		}
