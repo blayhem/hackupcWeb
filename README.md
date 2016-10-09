@@ -10,3 +10,4 @@ This may help you identify which are the best places in town to go out (so many 
 
 **[Altran](http://www.altran.com) provided us with a huga dataset** of locations in time which helped us make predictions based on previous data.
 
+![](example.gif)
