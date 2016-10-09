@@ -45,16 +45,17 @@ p{
 	display: inline-block;
 	vertical-align: top;
 	background-color: #303645;
-	text-align: center;;
+	text-align: center;
+	color: #fafafa;
 }
 
 .menu p{
 	font-size: 1.1em;
 	font-weight: 200;
 	font-family: Helvetica, Helvetica-Nueue, Open-sans, Roboto, sans;
-	color: #fafafa;
 	margin: 0px 2vw;
 	text-align: justify;
+	display: inline-block;
 }
 
 .menu img{
@@ -64,6 +65,12 @@ p{
 	margin: 20px 0px;
 }
 
+.menu i{
+	font-size: 1.5em;
+	position: relative;
+	right: 20px;
+}
+
 .footer{
 	width: 100%;
 	color: #fafafa;
@@ -71,6 +78,7 @@ p{
 	font-size: 0.8em;
 	position: absolute;
 	bottom: 10px;
+	text-align: left;
 }
 
 .footer .att{
@@ -81,6 +89,11 @@ p{
 .footer p{
 	margin-bottom: 2px;
 	text-align:left;
+}
+
+.footer i{
+	margin: 0px 2px;
+	cursor: pointer;
 }
 
 .map{
@@ -98,10 +111,10 @@ p{
    overflow: hidden;
    width: 30vw;
 	 max-width: 100px;
-	 background-color: #444;
+	 background-color: #222;
 	 color: #fafafa;
 	 font-size: 0.8em;
-	 display: block;
+	 display: inline-block;
 	 margin: 20px auto 30px auto;
 	 outline: none;
 }

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/style.css"/>
 	<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<style></style>
 </head>
 
@@ -38,10 +39,14 @@
         let queryOptions = {
           sql:"SELECT * FROM data_export_09_2016 WHERE extract(dow FROM date) = 0 AND EXTRACT(hour FROM date) = 0"
         }
-        // let sublayer = layer.getSubLayer(0);
-        // sublayer.set(queryOptions);
-        // sublayers.push(sublayer);
-        sublayers.push(layer);
+				if(layer.type==='torque'){
+					sublayers.push(layer);
+				}
+				else{
+					let sublayer = layer.getSubLayer(0);
+					sublayer.set(queryOptions);
+					sublayers.push(sublayer);
+				}
       });
       
       document.getElementById("weekday").addEventListener("change", cartoQuery);
